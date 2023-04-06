@@ -28,7 +28,7 @@ import Zucchini from "../asset/Zucchini.jpg";
 
 const RecipeNameWrapper = styled.div`
   margin-left: 30px;
-  margin-top: 10px;
+  margin-top: 85px;
 `;
 const RecipeName = styled.h2`
   color: black;
@@ -55,6 +55,7 @@ const RecipePhotoWrapper = styled.div`
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
+  
 
   &:hover {
     transform: scale(1.05);

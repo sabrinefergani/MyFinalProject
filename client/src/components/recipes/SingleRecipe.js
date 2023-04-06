@@ -109,6 +109,13 @@ const RecipePreference = styled.p`
   transition: color 0.3s ease-in-out;
   font-size: 12px;
 `;
+const RecipeValue = styled.p`
+   text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: "Montserrat", sans-serif;
+  transition: color 0.3s ease-in-out;
+  font-size: 12px;
+`;
 const AddToMenuButton = styled.button`
   background-color: #4d4d4d;
   border: none;
@@ -206,6 +213,25 @@ const SingleRecipe = (props) => {
             {recipe.dietary_preference}
             </RecipePreference>
            
+<RecipeValue>Nutritional Value : </RecipeValue>
+            <RecipeValue>Fiber : 
+            {recipe.nutritional_value.fiber},
+             Sodium : 
+              {recipe.nutritional_value.sodium},
+             Protein: 
+     {recipe.nutritional_value.protein},
+     Calories : 
+     {recipe.nutritional_value.calories},
+Total fat: 
+{recipe.nutritional_value.total_fat},
+Cholesterol: 
+{recipe.nutritional_value.cholesterol},
+Saturated Fat :
+ {recipe.nutritional_value.saturated_fat},
+Total carbohydrates: 
+ {recipe.nutritional_value.total_carbohydrates},
+ </RecipeValue>
+
 
             <AddToMenuButton>Add to Menu</AddToMenuButton>
 
