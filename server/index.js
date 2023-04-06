@@ -1,29 +1,47 @@
 "use strict";
 
+
 // import the needed node_modules.
 const express = require("express");
 const morgan = require("morgan");
-const port=8888;
+const cors = require("cors")
+const path = require('path');
 
-const app=express()
-  // Below are methods that are included in express(). We chain them for convenience.
-  // --------------------------------------------------------------------------------
+const {
+  getAllRecipes,
+  getRecipeById, 
+  getRandomRecipes,
+  getRecipeNames,
+} = require("./handlers");
 
-  
-  app.use(morgan("tiny"))
-  app.use(express.json())
+const port = 8000;
 
+const app = express();
 
-  app.get("/test", (req, res) => {
-    res.status(200).json({itWorked: true})
-  })
+app
+.use(express.static("server/asset"))
+ 
+  .use(express.urlencoded({ extended: false }))
+  .use("/", express.static(__dirname + "/"))
 
-  app .get("*", (req, res) => {
-    res.status(404).json({
-      status: 404,
-      message: "This is obviously not what you are looking for.",
-    });
-  })
+.use(morgan("tiny"))
+.use(express.json())
+.use(cors())
 
-  
-  app.listen(port, () => console.log(`Listening on port ${port}`));
+.get('/api/recipes/names', getRecipeNames)
+.get("/api/recipes", getAllRecipes)
+.get("/api/recipes/:_id", getRecipeById)
+.get('/api/random-recipes',getRandomRecipes)
+
+.get("/test", (req, res) => {
+  res.status(200).json({itWorked: true})
+})
+
+.get("*", (req, res) => {
+  res.status(404).json({
+    status: 404,
+    message: "This is obviously not what you are looking for.",
+  });
+})
+
+.listen(port, () => console.log(`Listening on port ${port}`))
