@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from "styled-components";
+import { Link } from 'react-router-dom';
 
 
 import asparagus from "../asset/asparagus.jpg";
@@ -116,7 +117,7 @@ const RecipeValue = styled.p`
   transition: color 0.3s ease-in-out;
   font-size: 12px;
 `;
-const AddToMenuButton = styled.button`
+const AddToMenuButton = styled(Link)`
   background-color: #4d4d4d;
   border: none;
   color: white;
@@ -233,7 +234,8 @@ Total carbohydrates:
  </RecipeValue>
 
 
-            <AddToMenuButton>Add to Menu</AddToMenuButton>
+ <AddToMenuButton to="/recipes">Go back to recipes ! </AddToMenuButton>
+
 
           </RecipeDetails>
         </>

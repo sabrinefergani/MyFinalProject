@@ -8,7 +8,13 @@ import Composting from "../src/components/bar/Composting";
 import ContactUs from "../src/components/bar/ContactUs";
 import Bar from "./components/bar/bar";
 import SingleRecipe from "./components/recipes/SingleRecipe";
+import SignIn from "./components/bar/SignIn"; 
+import SignUp from "./components/bar/SignUp"; 
+import DashBoard from "./components/user/DashBoard";
+import OneRecipe from "./components/user/OneRecipe";
+
 import { createGlobalStyle } from 'styled-components';
+import GetRecipe from "./components/user/GetRecipe";
 
 
 const GlobalStyle = createGlobalStyle`
@@ -33,7 +39,11 @@ const App = () => {
             <Route path="/composting" element={<Composting />} />
             <Route path="/contactUs" element={<ContactUs />} />
             <Route path="/recipes/:id" element={<SingleRecipe />} />
-
+            <Route path="/signIn" element={<SignIn />} />
+            <Route path="/signUp" element={<SignUp />} />
+            <Route path="/dashBoard" element={<DashBoard />} />
+            <Route path="/contentRecipe" element={<GetRecipe />} />
+            <Route path="/getRecipe/:id" element={<OneRecipe />} />
           </Routes>
         </Main>
       </RowWrapper>

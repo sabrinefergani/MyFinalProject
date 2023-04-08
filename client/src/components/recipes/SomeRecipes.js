@@ -43,13 +43,14 @@ const RecipeName = styled.h2`
 `;
 
 const RecipePhotoWrapper = styled.div`
+
   display: inline-flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 0 95px;
-  width: 250px;
-  height: 250px;
+  width: 225px;
+  height: 225px;
   border-radius: 50%;
   overflow: hidden;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);

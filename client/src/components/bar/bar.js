@@ -2,9 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 import styled from "styled-components";
-
+import { useLocation } from "react-router-dom";
 
 const Bar = () => {
+  const location = useLocation();
+
+  if (location.pathname === "/dashBoard"||location.pathname === "/contentRecipe"|| location.pathname.startsWith("/getRecipe/")) {
+    return null;
+  }
   return (
     <StyledBar>
       <nav>
@@ -24,6 +29,13 @@ const Bar = () => {
           <li>
             <Link to="/contactUs">Contact Us</Link>
           </li>
+          <li>
+            <Link to="/signIn">Sign in </Link>
+          </li>
+          <li>
+            <Link to="/signUp">Sign up </Link>
+          </li>
+        
         </ul>
       </nav>
       <div className="social-icons">
@@ -67,10 +79,10 @@ const StyledBar = styled.header`
   }
 
   li {
-    margin-right: 15px;
+    margin-right: 10px;
     font-family: "Montserrat", sans-serif;
     font-size: 5px;
-    padding-left: 120px;
+    padding-left:100px;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: #4d4d4d;
@@ -84,7 +96,7 @@ const StyledBar = styled.header`
     font-size: 10px;
     font-weight: 600;
     transition: color 0.3s ease;
-    margin-right: 5px;
+    margin-right: 2px;
   }
 
   a:hover {

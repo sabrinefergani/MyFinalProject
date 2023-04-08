@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { Link } from 'react-router-dom';
+
 
 import asparagus from "../asset/asparagus.jpg";
 import beans from "../asset/beans.jpg";
@@ -121,26 +123,8 @@ const RecipePreference = styled.p`
   transition: color 0.3s ease-in-out;
   font-size: 12px;
 `;
-const AddToMenuButton = styled.button`
-  background-color: #4d4d4d;
-  border: none;
-  color: white;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 5px;
-  font-family: "Montserrat", sans-serif;
-  transition: color 0.3s ease-in-out;
-  cursor: pointer;
-  margin-top: 20px;
-  margin-right: 25px;
-  &:hover {
-    background-color: #8bc34a;
-  }
 
-`;
+
 const RecipeValue = styled.p`
    text-transform: uppercase;
   letter-spacing: 1px;
@@ -260,7 +244,8 @@ Total carbohydrates:
 
 
 
-<AddToMenuButton>Add to Menu</AddToMenuButton>
+
+
           </RecipeItem>
         ))}
       </RecipeList>
