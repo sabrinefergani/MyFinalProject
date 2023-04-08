@@ -17,6 +17,18 @@ const StyledH1 = styled.h1`
   margin-left: 100px;
   font-family: "Montserrat", sans-serif;
   font-size: 25px;
+
+`;
+const SuggestionsWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #4d4d4d;
 `;
 
 //Call the component for home 
@@ -25,6 +37,8 @@ const Home = () => {
     <>
       <Header />
       <StyledH1> </StyledH1>
+
+      <SuggestionsWrapper>Suggestions</SuggestionsWrapper>
       <SomeRecipes />
     </>
   );

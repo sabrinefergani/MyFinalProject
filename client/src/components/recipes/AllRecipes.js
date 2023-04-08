@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
 
 import asparagus from "../asset/asparagus.jpg";
 import beans from "../asset/beans.jpg";
@@ -24,13 +23,11 @@ import sweetpatato from "../asset/sweetpatato.jpg";
 import tomato from "../asset/tomato.jpg";
 import Zucchini from "../asset/Zucchini.jpg";
 
-
-// Style 
+// Style
 const RecipeList = styled.ul`
   list-style-type: none;
   margin: 0;
   padding: 0;
-  
 `;
 
 const RecipeItem = styled.li`
@@ -39,17 +36,12 @@ const RecipeItem = styled.li`
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
 `;
-
-
-
 
 const RecipeDetailItem = styled.div`
   flex-basis: 33.33%;
-  
 `;
-
 
 const Heading = styled.h1`
   font-size: 25px;
@@ -69,10 +61,7 @@ const RecipePhoto = styled.img`
   border-radius: 15px;
 `;
 
-
 const RecipeTitle = styled.p`
- 
-  
   text-transform: uppercase;
   letter-spacing: 1px;
   font-family: "Montserrat", sans-serif;
@@ -81,36 +70,37 @@ const RecipeTitle = styled.p`
   color: #4d4d4d;
 `;
 const RecipeIngredient = styled.p`
-   text-transform: uppercase;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: "Montserrat", sans-serif;
+  transition: color 0.3s ease-in-out;
+  font-size: 12px;
+`;
+const RecipePreparation = styled.p`
+  text-transform: uppercase;
   letter-spacing: 1px;
   font-family: "Montserrat", sans-serif;
   transition: color 0.3s ease-in-out;
   font-size: 12px;
 
-`;
-const RecipePreparation = styled.p`
-   text-transform: uppercase;
-  letter-spacing: 1px;
-  font-family: "Montserrat", sans-serif;
-  transition: color 0.3s ease-in-out;
-  font-size: 12px;
+  line-height: 1.5;
 `;
 const RecipeTime = styled.p`
-   text-transform: uppercase;
+  text-transform: uppercase;
   letter-spacing: 1px;
   font-family: "Montserrat", sans-serif;
   transition: color 0.3s ease-in-out;
   font-size: 12px;
 `;
 const RecipePortions = styled.p`
-   text-transform: uppercase;
+  text-transform: uppercase;
   letter-spacing: 1px;
   font-family: "Montserrat", sans-serif;
   transition: color 0.3s ease-in-out;
   font-size: 12px;
 `;
 const RecipeRestriction = styled.p`
-   text-transform: uppercase;
+  text-transform: uppercase;
   letter-spacing: 1px;
   font-family: "Montserrat", sans-serif;
   transition: color 0.3s ease-in-out;
@@ -118,16 +108,15 @@ const RecipeRestriction = styled.p`
 `;
 
 const RecipePreference = styled.p`
-   text-transform: uppercase;
+  text-transform: uppercase;
   letter-spacing: 1px;
   font-family: "Montserrat", sans-serif;
   transition: color 0.3s ease-in-out;
   font-size: 12px;
 `;
 
-
 const RecipeValue = styled.p`
-   text-transform: uppercase;
+  text-transform: uppercase;
   letter-spacing: 1px;
   font-family: "Montserrat", sans-serif;
   transition: color 0.3s ease-in-out;
@@ -136,29 +125,29 @@ const RecipeValue = styled.p`
 
 // create a name for photo
 const recipePhotos = {
-    'Asparagus': asparagus,
-    'Beans': beans,
-    'Brocoli': brocoli,
-    'Carrot': carrot,
-    'Cauliflower': cauliflower,
-    'Celery': celery,
-    'Cucumber': cucumber,
-    'Eggplant': eggplant,
-    'Garlic': garlic,
-    'Kale': kale,
-    'Lettuce': lettuce,
-    'Mushroom': mushroom,
-    'Onion': onion,
-    'Patato': patato,
-    'Peppers': peppers,
-    'Radish': radish,
-    'Spinach': spinach,
-    'Sweetpatato': sweetpatato,
-    'Tomato': tomato,
-    'Zucchini': Zucchini,
-  };
+  Asparagus: asparagus,
+  Beans: beans,
+  Brocoli: brocoli,
+  Carrot: carrot,
+  Cauliflower: cauliflower,
+  Celery: celery,
+  Cucumber: cucumber,
+  Eggplant: eggplant,
+  Garlic: garlic,
+  Kale: kale,
+  Lettuce: lettuce,
+  Mushroom: mushroom,
+  Onion: onion,
+  Patato: patato,
+  Peppers: peppers,
+  Radish: radish,
+  Spinach: spinach,
+  Sweetpatato: sweetpatato,
+  Tomato: tomato,
+  Zucchini: Zucchini,
+};
 
-  // Setting the recipe // fetch them 
+// Setting the recipe // fetch them
 const AllRecipes = () => {
   const [recipes, setRecipes] = useState([]);
 
@@ -177,84 +166,72 @@ const AllRecipes = () => {
     fetchRecipes();
   }, []);
 
-
-  // return info for  recipe 
+  // return info for  recipe
   return (
     <div>
       <Heading>All Recipes</Heading>
       <RecipeList>
         {recipes.map((recipe) => (
           <RecipeItem key={recipe._id}>
+            <RecipeDetailItem>
+              <a href={`/recipes/${recipe._id}`}>
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <RecipePhoto
+                    src={recipePhotos[recipe.name]}
+                    alt={recipe.name}
+                  />
+                  <div style={{ marginLeft: "10px" }}></div>
+                </div>
+              </a>
+            </RecipeDetailItem>
 
-<RecipeDetailItem>
-  <a href={`/recipes/${recipe._id}`}>
-    <div style={{ display: 'flex', alignItems: 'center' }}>
-      <RecipePhoto src={recipePhotos[recipe.name]} alt={recipe.name} />
-      <div style={{ marginLeft: '10px' }}>
-        
-      </div>
-    </div>
-  </a>
-</RecipeDetailItem>
+            <RecipeTitle>{recipe.title}</RecipeTitle>
 
+            <RecipeIngredient>
+              Ingredients:
+              {recipe.ingredient}
+            </RecipeIngredient>
 
+            <RecipePreparation>
+              Preparation:
+              {recipe.preparation}
+            </RecipePreparation>
 
-<RecipeTitle>{recipe.title}</RecipeTitle>
+            <RecipeTime>
+              Time:
+              {recipe.time}
+            </RecipeTime>
 
-<RecipeIngredient>Ingredients:
-{recipe.ingredient}
-</RecipeIngredient>
+            <RecipePortions>
+              Portions:
+              {recipe.portions}
+            </RecipePortions>
 
-<RecipePreparation>Preparation:
-{recipe.preparation}
-</RecipePreparation>
+            <RecipeRestriction>
+              Restriction:
+              {recipe.restriction}
+            </RecipeRestriction>
 
-<RecipeTime>Time:
-{recipe.time}
-</RecipeTime>
+            <RecipePreference>
+              Preference:
+              {recipe.dietary_preference}
+            </RecipePreference>
 
-
-<RecipePortions>Portions:
-{recipe.portions}
-</RecipePortions>
-
-
-<RecipeRestriction>Restriction:
-{recipe.restriction}
-</RecipeRestriction>
-
-<RecipePreference>Preference:
-{recipe.dietary_preference}
-</RecipePreference>
-
-<RecipeValue>Nutritional Value : </RecipeValue>
-            <RecipeValue>Fiber : 
-            {recipe.nutritional_value.fiber},
-             Sodium : 
-              {recipe.nutritional_value.sodium},
-             Protein: 
-     {recipe.nutritional_value.protein},
-     Calories : 
-     {recipe.nutritional_value.calories},
-Total fat: 
-{recipe.nutritional_value.total_fat},
-Cholesterol: 
-{recipe.nutritional_value.cholesterol},
-Saturated Fat :
- {recipe.nutritional_value.saturated_fat},
-Total carbohydrates: 
- {recipe.nutritional_value.total_carbohydrates},
- </RecipeValue>
-
-
-
-
-
+            <RecipeValue>Nutritional Value : </RecipeValue>
+            <RecipeValue>
+              Fiber :{recipe.nutritional_value.fiber}, Sodium :
+              {recipe.nutritional_value.sodium}, Protein:
+              {recipe.nutritional_value.protein}, Calories :
+              {recipe.nutritional_value.calories}, Total fat:
+              {recipe.nutritional_value.total_fat}, Cholesterol:
+              {recipe.nutritional_value.cholesterol}, Saturated Fat :
+              {recipe.nutritional_value.saturated_fat}, Total carbohydrates:
+              {recipe.nutritional_value.total_carbohydrates},
+            </RecipeValue>
           </RecipeItem>
         ))}
       </RecipeList>
     </div>
-    
   );
 };
 
