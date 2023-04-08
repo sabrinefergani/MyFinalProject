@@ -25,6 +25,8 @@ import sweetpatato from "../asset/sweetpatato.jpg";
 import tomato from "../asset/tomato.jpg";
 import Zucchini from "../asset/Zucchini.jpg";
 
+
+//Style
 const RecipeBox = styled.div`
   display: flex;
   flex-direction: row;
@@ -137,6 +139,8 @@ const AddToMenuButton = styled(Link)`
   }
 
 `;
+
+// setting photo link 
 const recipePhotos = {
   'Asparagus': asparagus,
   'Beans': beans,
@@ -160,6 +164,7 @@ const recipePhotos = {
   'Zucchini': Zucchini,
 };
 
+//fetch One single recipe 
 const SingleRecipe = (props) => {
   const [recipe, setRecipe] = useState(null);
   const { id } = useParams();

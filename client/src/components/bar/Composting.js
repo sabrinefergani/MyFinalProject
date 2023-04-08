@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSeedling } from "@fortawesome/free-solid-svg-icons";
 
 
+// style 
 const CompostingContainer = styled.div`
   display: flex;
   justify-content: center;

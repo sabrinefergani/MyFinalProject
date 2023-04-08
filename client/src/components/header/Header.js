@@ -1,8 +1,7 @@
 import React from 'react';
-import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
 import styled from 'styled-components';
 
-
+// Setting the header images font 
 const Header = () => {
   const headerStyle = {
     backgroundImage: `url("https://i0.wp.com/www.greenweez.com/magazine/wp-content/uploads/2017/09/shutterstock_1682243677.jpg?fit=1000%2C667&ssl=1")`,
@@ -25,6 +24,8 @@ const Header = () => {
     </StyledHeader>
   );
 };
+
+//Style 
 
 const StyledHeader = styled.header`
   display: flex;

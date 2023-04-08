@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+// Setting firebaseConfig 
 const firebaseConfig = {
   apiKey: "AIzaSyDFCpTlP06Qw4caxNb5w7pL7UZnmkRTqH0",
   authDomain: "myfinalproject-e7dcb.firebaseapp.com",
@@ -18,6 +19,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+//Style 
 const SignUpContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -92,6 +94,7 @@ const ErrorMessage = styled.div`
   font-family: "Montserrat", sans-serif;
 `;
 
+// Setting the form to signUp 
 const SignUp = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -113,6 +116,7 @@ const SignUp = () => {
     }
   };
 
+  // return the input field
   return (
     <SignUpContainer>
       <SignUpBox>

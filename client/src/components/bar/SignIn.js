@@ -4,6 +4,8 @@ import "firebase/compat/auth";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
+//Style 
+
 const SignInContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -76,6 +78,8 @@ const Button = styled.button`
   }
 `;
 
+
+// Set in the email and password to connect 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -92,7 +96,7 @@ const SignIn = () => {
       setError(error.message);
     }
   };
-
+// returning the input field  
   return (
     <SignInContainer>
       <SignInBox>

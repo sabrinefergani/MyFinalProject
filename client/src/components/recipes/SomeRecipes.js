@@ -26,38 +26,22 @@ import tomato from "../asset/tomato.jpg";
 import Zucchini from "../asset/Zucchini.jpg";
 
 
-const RecipeNameWrapper = styled.div`
-  margin-left: 30px;
-  margin-top: 85px;
-`;
-const RecipeName = styled.h2`
-  color: black;
-  margin: 20px 10px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-family: "Montserrat", sans-serif;
-  font-size: 14px;
-  transition: color 0.3s ease-in-out;
-
-
-`;
+//Style 
 
 const RecipePhotoWrapper = styled.div`
-
   display: inline-flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0 95px;
+  margin: 25px;
+  margin-left: 165px;
   width: 225px;
   height: 225px;
-  border-radius: 50%;
+  border-radius: 25%;
   overflow: hidden;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   cursor: pointer;
-  transition: transform 0.3s ease-in-out;
   
-
   &:hover {
     transform: scale(1.05);
   }
@@ -68,11 +52,11 @@ const RecipePhoto = styled.img`
   height: 100%;
   object-fit: cover;
   object-position: center;
- 
+
 `;
 
 
-
+// Setting images 
 const recipePhotos = {
     'Asparagus': asparagus,
     'Beans': beans,
@@ -95,6 +79,8 @@ const recipePhotos = {
     'Tomato': tomato,
     'Zucchini': Zucchini,
   };
+
+  // Setting the 3 recipe for home , fetch 
 const SomeRecipes = () => {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -129,9 +115,7 @@ const SomeRecipes = () => {
         recipes.map((recipe) => (
           
           <RecipePhotoWrapper key={recipe._id}>
-            <RecipeNameWrapper>
-              <RecipeName>{recipe.title}</RecipeName>
-            </RecipeNameWrapper>
+         
             <Link to={`recipes/${recipe._id}`}>
               <RecipePhoto src={recipePhotos[recipe.name]} alt={recipe.name} />
             </Link>

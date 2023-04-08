@@ -2,6 +2,8 @@ import React from "react";
 import NavBar from "./NavBar";
 import styled from "styled-components";
 
+
+// Style 
 const RecipeBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -38,6 +40,7 @@ const Message = styled.p`
   font-family: "Montserrat", sans-serif;
 `;
 
+//Setting the dashboard for the user 
 const DashBoard = () => {
 
   return (

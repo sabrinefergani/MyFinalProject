@@ -4,6 +4,7 @@ import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 
+// delimiting the element in bar // setting where bar will not appear 
 const Bar = () => {
   const location = useLocation();
 
@@ -17,9 +18,7 @@ const Bar = () => {
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li>
-            <Link to="/aboutUs">About Us</Link>
-          </li>
+         
           <li>
             <Link to="/recipes">Recipes</Link>
           </li>
@@ -29,7 +28,10 @@ const Bar = () => {
           <li>
             <Link to="/contactUs">Contact Us</Link>
           </li>
-          <li>
+           <li >
+            <Link to="/aboutUs">About Us</Link>
+          </li>
+          <li >
             <Link to="/signIn">Sign in </Link>
           </li>
           <li>
@@ -54,6 +56,7 @@ const Bar = () => {
   );
 };
 
+//style 
 const StyledBar = styled.header`
   display: flex;
   justify-content: space-between;
@@ -63,12 +66,15 @@ const StyledBar = styled.header`
   top: 0;
   left: 0;
   right: 0;
-  
+  width: 100%;
+  background-color: #fff;
+  z-index: 1;
   
   nav {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-grow: 1;
   }
   
   ul {
@@ -81,8 +87,7 @@ const StyledBar = styled.header`
   li {
     margin-right: 10px;
     font-family: "Montserrat", sans-serif;
-    font-size: 5px;
-    padding-left:100px;
+    font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: #4d4d4d;
@@ -93,10 +98,10 @@ const StyledBar = styled.header`
   a {
     color: #4d4d4d;
     text-decoration: none;
-    font-size: 10px;
     font-weight: 600;
     transition: color 0.3s ease;
-    margin-right: 2px;
+    padding: 10px;
+    display: block;
   }
 
   a:hover {
@@ -106,12 +111,14 @@ const StyledBar = styled.header`
   .social-icons {
     display: flex;
     align-items: center;
+    margin-right: 96px;
+    
   }
 
   .social-icons a {
     color: #4d4d4d;
-    padding-right: 35px;
-    font-size: 10px;
+    font-size: 7px;
+    margin-right: 2px;
     transition: color 0.3s ease;
   }
 

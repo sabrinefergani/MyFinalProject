@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import Header from "../header/Header";
-import SingleRecipe from "../recipes/SingleRecipe";
 import SomeRecipes from "../recipes/SomeRecipes";
 
+//Style 
 const StyledH1 = styled.h1`
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -19,6 +19,7 @@ const StyledH1 = styled.h1`
   font-size: 25px;
 `;
 
+//Call the component for home 
 const Home = () => {
   return (
     <>

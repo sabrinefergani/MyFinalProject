@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import AllRecipes from "../recipes/AllRecipes";
 import Ingredient from "../recipes/Ingredient";
-import SingleRecipe from "../recipes/SingleRecipe"
 
+// style  
 const StyledRecipes = styled.div`
   display: flex;
   background-color: #fff;
@@ -18,6 +18,7 @@ const IngredientWrapper = styled.div`
   margin-right: 20px;
 `;
 
+// call on component to render The recipe 
 const Recipes = () => {
   return (
     <StyledRecipes>

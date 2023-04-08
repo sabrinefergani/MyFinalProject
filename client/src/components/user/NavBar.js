@@ -4,12 +4,13 @@ import styled from "styled-components";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 
+// Setting bar for user 
 const NavBar = () => {
   const navigate = useNavigate();
 
-  const handleLogout = async () => {
+  const handleLogout = async () => {        
     try {
-      await firebase.auth().signOut();
+      await firebase.auth().signOut();  // Log out , redirect to home 
       navigate("/home");
     } catch (error) {
       console.error(error);
@@ -33,6 +34,7 @@ const NavBar = () => {
   );
 };
 
+//Style 
 const StyledBar = styled.header`
   display: flex;
   justify-content: space-between;

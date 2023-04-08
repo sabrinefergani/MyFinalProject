@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
 
+
+// Style 
 const DropdownContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -56,6 +58,7 @@ const GoToRecipeButton = styled.button`
   }
 `;
 
+// Setting the dropdown For name 
 const Ingredient = () => {
   const [recipes, setRecipes] = useState([]);
   const [selectedRecipe, setSelectedRecipe] = useState("");
@@ -79,6 +82,7 @@ const Ingredient = () => {
     setSelectedRecipe(event.target.value);
   };
 
+  
   return (
     <DropdownContainer>
       <DropdownTitle>Select a Recipe:</DropdownTitle>

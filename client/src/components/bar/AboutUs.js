@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+// style 
 const AboutContainer = styled.div`
   display: flex;
   justify-content: center;

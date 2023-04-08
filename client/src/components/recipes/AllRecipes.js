@@ -25,6 +25,7 @@ import tomato from "../asset/tomato.jpg";
 import Zucchini from "../asset/Zucchini.jpg";
 
 
+// Style 
 const RecipeList = styled.ul`
   list-style-type: none;
   margin: 0;
@@ -133,7 +134,7 @@ const RecipeValue = styled.p`
   font-size: 12px;
 `;
 
-
+// create a name for photo
 const recipePhotos = {
     'Asparagus': asparagus,
     'Beans': beans,
@@ -157,6 +158,7 @@ const recipePhotos = {
     'Zucchini': Zucchini,
   };
 
+  // Setting the recipe // fetch them 
 const AllRecipes = () => {
   const [recipes, setRecipes] = useState([]);
 
@@ -175,6 +177,8 @@ const AllRecipes = () => {
     fetchRecipes();
   }, []);
 
+
+  // return info for  recipe 
   return (
     <div>
       <Heading>All Recipes</Heading>

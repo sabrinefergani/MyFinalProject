@@ -4,6 +4,7 @@ import AllRecipes from "../recipes/AllRecipes";
 import GetIngredient from "../user/GetIngredient";
 import { useNavigate } from "react-router-dom";
 
+//Style 
 const StyledRecipes = styled.div`
   display: flex;
   background-color: #fff;
@@ -33,6 +34,7 @@ const BackButton = styled.button`
   font-family: "Montserrat", sans-serif;
 `;
 
+// remake of Recipe page but for User
 const GetRecipe = () => {
   const navigate = useNavigate();
 

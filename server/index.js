@@ -19,6 +19,8 @@ const port = 8000;
 
 const app = express();
 
+// Setting firebase 
+
 firebaseAdmin.initializeApp({
   credential: firebaseAdmin.credential.cert(serviceAccount),
   databaseURL: "firebase-adminsdk-3l7zm@myfinalproject-e7dcb.iam.gserviceaccount.com", // replace with your Firebase project URL

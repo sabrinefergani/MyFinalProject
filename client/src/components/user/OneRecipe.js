@@ -25,6 +25,8 @@ import sweetpatato from "../asset/sweetpatato.jpg";
 import tomato from "../asset/tomato.jpg";
 import Zucchini from "../asset/Zucchini.jpg";
 
+
+// Style 
 const RecipeBox = styled.div`
   display: flex;
   flex-direction: row;
@@ -160,6 +162,8 @@ const recipePhotos = {
   'Zucchini': Zucchini,
 };
 
+
+// Remake off singleRecipe for User state. 
 const OneRecipe = (props) => {
   const [recipe, setRecipe] = useState(null);
   const { id } = useParams();

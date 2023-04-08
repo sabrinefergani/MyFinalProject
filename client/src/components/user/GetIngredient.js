@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
 
+
+//Style
 const DropdownContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -55,7 +57,7 @@ const GoToRecipeButton = styled.button`
     background-color: #8bc34a;
   }
 `;
-
+//remake of thedropdown but for the user 
 const GetIngredient = () => {
   const [recipes, setRecipes] = useState([]);
   const [selectedRecipe, setSelectedRecipe] = useState("");
