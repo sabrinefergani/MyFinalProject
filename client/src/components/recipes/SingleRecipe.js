@@ -37,8 +37,8 @@ const RecipeBox = styled.div`
   border-radius: 5px;
   margin: 150px;
   margin-top: 15px;
-  height:900px ;
-  width: 1300px;
+  height:1000px ;
+  width: 1400px;
   border: 5px solid black;
   
 `;

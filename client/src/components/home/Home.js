@@ -32,7 +32,7 @@ const StyledMessage = styled.div`
 
 const StyledSomeRecipe = styled.div`
 
-  margin-right: 55px ;
+  margin-right: 40px ;
 `;
 
 const StyledContainer = styled.div`
