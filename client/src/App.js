@@ -21,13 +21,12 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
 `;
-// Setting the route for page 
+// Setting the route for page
 const App = () => {
   return (
     <BrowserRouter>
       <RowWrapper>
         <Main>
-         
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/aboutUs" element={<AboutUs />} />
