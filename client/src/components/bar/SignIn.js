@@ -3,41 +3,57 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import Bar from "./Bar";
 
 //Style 
 
 const SignInContainer = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f5f5f5;
+  background-image: url('https://img.freepik.com/premium-photo/black-stone-cooking-background-spices-vegetables-top-view-free-space-your-text-generative-ai_410516-988.jpg');
+ background-size: 100%;
+  top:0px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  background-position: center top;
+  height:140vh;
+  background-repeat: no-repeat;
 `;
 
 const SignInBox = styled.div`
+
+  margin-top: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 50px;
+  margin-left: 350px;
+  margin-top: 150px;
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width:500px;
+  height: 500px;
+  border: 5px solid black;
 `;
 
 const Title = styled.h1`
+
   font-size: 25px;
-  margin-bottom: 20px;
+ margin-top: 110px;
   text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #4d4d4d;
-  font-family: "Montserrat", sans-serif;
+  font-family: Monaco, monospace;
+    font-size: 25px;
+    font-weight:900;
+    text-transform: uppercase;
+    color: black;
 `;
 
 const ErrorMsg = styled.div`
   margin-bottom: 10px;
   color: #f44336;
-  font-family: "Montserrat", sans-serif;
+  font-family: Monaco, monospace;
 `;
 
 const FormField = styled.div`
@@ -48,8 +64,8 @@ const FormField = styled.div`
 
 const Label = styled.label`
   margin-bottom: 10px;
-  color: #4d4d4d;
-  font-family: "Montserrat", sans-serif;
+  font-family: Monaco, monospace;
+  color: black;
 `;
 
 const Input = styled.input`
@@ -77,7 +93,14 @@ const Button = styled.button`
     background-color: #8bc34a;
   }
 `;
-
+const StyledBar = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: none;
+  z-index: 1;
+  border-bottom: 1px solid #ddd;
+`;
 
 // Set in the email and password to connect 
 const SignIn = () => {
@@ -98,6 +121,10 @@ const SignIn = () => {
   };
 // returning the input field  
   return (
+    <>
+    <StyledBar>
+        <Bar />
+      </StyledBar>
     <SignInContainer>
       <SignInBox>
         <Title>Sign In</Title>
@@ -123,6 +150,7 @@ const SignIn = () => {
         </form>
       </SignInBox>
     </SignInContainer>
+    </>
   );
 };
 

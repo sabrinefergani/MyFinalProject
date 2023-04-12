@@ -161,7 +161,7 @@ const recipePhotos = {
 };
 
 // Setting the recipe // fetch them
-const AllRecipes = () => {
+const ToAllRecipes = () => {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
@@ -188,7 +188,7 @@ const AllRecipes = () => {
         {recipes.map((recipe) => (
           <RecipeItem key={recipe._id}>
             <RecipeDetailItem>
-              <a href={`/recipes/${recipe._id}`}>
+              <a href={`/getRecipe/${recipe._id}`}>
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <RecipePhoto
                     src={recipePhotos[recipe.name]}
@@ -249,4 +249,4 @@ const AllRecipes = () => {
   );
 };
 
-export default AllRecipes;
+export default ToAllRecipes;

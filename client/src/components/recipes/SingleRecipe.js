@@ -33,45 +33,65 @@ const RecipeBox = styled.div`
   justify-content: center;
   align-items: center;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-  background-color: #F7F7F7;
-  border-radius: 15px;
+  background-color: #f7f7f7;
+  border-radius: 5px;
   margin: 150px;
   margin-top: 15px;
-  height:700px ;
-  width: 1100px;
+  height:900px ;
+  width: 1300px;
+  border: 5px solid black;
+  
+`;
+const RecipeFirst = styled.div`
+ display: flex;
+  background-image: url('https://thumbs.dreamstime.com/b/asian-food-cooking-wok-noodles-chicken-stir-fry-vegetables-ingredients-spices-sauces-chopsticks-dark-rustic-83701227.jpg');
+  padding-top: 45px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  background-position: center top;
+  height: 2400vh;
 `;
 
-const RecipePhoto = styled.img`
-margin-bottom:100px;
-  width: 280px;
-  height: 250px;
-  margin-right: 15px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-  opacity: 10;
-  margin-left: 25px;
-  border-radius: 15px;
-`;
 
 const RecipeDetails = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-left: 55px;
 `;
 
+const RecipePhoto = styled.img`
+  margin-bottom: 20px;
+  opacity: 10;
+  border: 2px solid black;
+  width: 225px;
+  height: 225px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  border: 5px solid black;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+`;
 
 const RecipeTitle = styled.p`
- 
-  font-size: 18px;
+  margin-top: 10px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-family: "Montserrat", sans-serif;
+  font-family: Lucida Handwriting, cursive;
   transition: color 0.3s ease-in-out;
-  font-size: 20px;
+  font-size: 24px;
+  color: #4d4d4d;
 `;
 const RecipeIngredient = styled.p`
-   text-transform: uppercase;
+  text-transform: uppercase;
   letter-spacing: 1px;
-  font-family: "Montserrat", sans-serif;
+  font-family: Lucida Handwriting, cursive;
   transition: color 0.3s ease-in-out;
   font-size: 12px;
 
@@ -79,43 +99,43 @@ const RecipeIngredient = styled.p`
 const RecipePreparation = styled.p`
    text-transform: uppercase;
   letter-spacing: 1px;
-  font-family: "Montserrat", sans-serif;
+  font-family: Lucida Handwriting, cursive;
   transition: color 0.3s ease-in-out;
   font-size: 12px;
 `;
 const RecipeTime = styled.p`
-   text-transform: uppercase;
+    text-transform: uppercase;
   letter-spacing: 1px;
-  font-family: "Montserrat", sans-serif;
+  font-family: Lucida Handwriting, cursive;
   transition: color 0.3s ease-in-out;
   font-size: 12px;
 `;
 const RecipePortions = styled.p`
-   text-transform: uppercase;
+    text-transform: uppercase;
   letter-spacing: 1px;
-  font-family: "Montserrat", sans-serif;
+  font-family: Lucida Handwriting, cursive;
   transition: color 0.3s ease-in-out;
   font-size: 12px;
 `;
 const RecipeRestriction = styled.p`
-   text-transform: uppercase;
+    text-transform: uppercase;
   letter-spacing: 1px;
-  font-family: "Montserrat", sans-serif;
+  font-family: Lucida Handwriting, cursive;
   transition: color 0.3s ease-in-out;
   font-size: 12px;
 `;
 
 const RecipePreference = styled.p`
-   text-transform: uppercase;
+  text-transform: uppercase;
   letter-spacing: 1px;
-  font-family: "Montserrat", sans-serif;
+  font-family: Lucida Handwriting, cursive;
   transition: color 0.3s ease-in-out;
   font-size: 12px;
 `;
 const RecipeValue = styled.p`
-   text-transform: uppercase;
+    text-transform: uppercase;
   letter-spacing: 1px;
-  font-family: "Montserrat", sans-serif;
+  font-family: Lucida Handwriting, cursive;
   transition: color 0.3s ease-in-out;
   font-size: 12px;
 `;
@@ -185,70 +205,50 @@ const SingleRecipe = (props) => {
   }, [[id]]);
 
   return (
+    <RecipeFirst>
     <RecipeBox>
       {recipe ? (
         <>
-          <RecipePhoto src={recipePhotos[recipe.name]} alt={recipe.name} />
+         
           <RecipeDetails>
+  <RecipePhoto src={recipePhotos[recipe.name]} alt={recipe.name} />
 
-            <RecipeTitle>{recipe.title}</RecipeTitle>
+  <RecipeTitle>{recipe.title}</RecipeTitle>
 
-            <RecipeIngredient>Ingredients:
-            {recipe.ingredient}
-            </RecipeIngredient>
+  <RecipeIngredient>Ingredients: {recipe.ingredient}</RecipeIngredient>
 
-            <RecipePreparation>Preparation:
-            {recipe.preparation}
-            </RecipePreparation>
+  <RecipePreparation>Preparation: {recipe.preparation}</RecipePreparation>
 
-            <RecipeTime>Time:
-            {recipe.time}
-            </RecipeTime>
+  <RecipeTime>Time: {recipe.time}</RecipeTime>
 
+  <RecipePortions>Portions: {recipe.portions}</RecipePortions>
 
-            <RecipePortions>Portions:
-            {recipe.portions}
-            </RecipePortions>
+  <RecipeRestriction>Restriction: {recipe.restriction}</RecipeRestriction>
 
+  <RecipePreference>Preference: {recipe.dietary_preference}</RecipePreference>
 
-            <RecipeRestriction>Restriction:
-            {recipe.restriction}
-            </RecipeRestriction>
+  <RecipeValue>
+    Nutritional Value : 
+    Fiber: {recipe.nutritional_value.fiber},
+    Sodium: {recipe.nutritional_value.sodium},
+    Protein: {recipe.nutritional_value.protein},
+    Calories: {recipe.nutritional_value.calories},
+    Total fat: {recipe.nutritional_value.total_fat},
+    Cholesterol: {recipe.nutritional_value.cholesterol},
+    Saturated Fat: {recipe.nutritional_value.saturated_fat},
+    Total carbohydrates: {recipe.nutritional_value.total_carbohydrates},
+  </RecipeValue>
 
-            <RecipePreference>Preference:
-            {recipe.dietary_preference}
-            </RecipePreference>
-           
-<RecipeValue>Nutritional Value : </RecipeValue>
-            <RecipeValue>Fiber : 
-            {recipe.nutritional_value.fiber},
-             Sodium : 
-              {recipe.nutritional_value.sodium},
-             Protein: 
-     {recipe.nutritional_value.protein},
-     Calories : 
-     {recipe.nutritional_value.calories},
-Total fat: 
-{recipe.nutritional_value.total_fat},
-Cholesterol: 
-{recipe.nutritional_value.cholesterol},
-Saturated Fat :
- {recipe.nutritional_value.saturated_fat},
-Total carbohydrates: 
- {recipe.nutritional_value.total_carbohydrates},
- </RecipeValue>
-
-
- <AddToMenuButton to="/recipes">Go back to recipes ! </AddToMenuButton>
-
-
-          </RecipeDetails>
+  <AddToMenuButton to="/recipes">Go back to recipes !</AddToMenuButton>
+</RecipeDetails>
         </>
       ) : (
         <p>Loading...</p>
       )}
+       
     </RecipeBox>
+    </RecipeFirst>
   );
 };
 
-export default SingleRecipe;
+export default SingleRecipe; 

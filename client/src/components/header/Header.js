@@ -4,7 +4,7 @@ import styled from 'styled-components';
 // Setting the header images font 
 const Header = () => {
   const headerStyle = {
-    backgroundImage: `url("https://i0.wp.com/www.greenweez.com/magazine/wp-content/uploads/2017/09/shutterstock_1682243677.jpg?fit=1000%2C667&ssl=1")`,
+    backgroundImage: `url("https://cdn.pixabay.com/photo/2017/02/15/10/39/salad-2068220__340.jpg")`,
     backgroundSize: 'cover',
     backgroundPosition: 'top ',
     boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.2)',

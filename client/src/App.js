@@ -5,7 +5,7 @@ import Recipes from "../src/components/bar/Recipes";
 import AboutUs from "../src/components/bar/AboutUs";
 import Composting from "../src/components/bar/Composting";
 import ContactUs from "../src/components/bar/ContactUs";
-import Bar from "./components/bar/bar";
+
 import SingleRecipe from "./components/recipes/SingleRecipe";
 import SignIn from "./components/bar/SignIn";
 import SignUp from "./components/bar/SignUp";
@@ -27,7 +27,7 @@ const App = () => {
     <BrowserRouter>
       <RowWrapper>
         <Main>
-          <Bar />
+         
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/aboutUs" element={<AboutUs />} />
@@ -47,7 +47,7 @@ const App = () => {
   );
 };
 
-//Some styling 
+//Some styling
 const Main = styled.div`
   flex: 1;
   padding-right: 20px;

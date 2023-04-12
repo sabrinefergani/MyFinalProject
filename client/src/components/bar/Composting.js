@@ -1,44 +1,59 @@
 import React from "react";
 import styled from "styled-components";
+import Bar from "./Bar";
 
 
 // style 
 const CompostingContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f5f5f5;
+ display: flex;
+  background-image: url('https://thumbs.dreamstime.com/b/asian-food-cooking-wok-noodles-chicken-stir-fry-vegetables-ingredients-spices-sauces-chopsticks-dark-rustic-83701227.jpg');
+  padding-top: 45px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  background-position: center top;
+  height: 2400vh;
+  
 `;
 
 const CompostingBox = styled.div`
+margin-top: 150px;
+margin-right:150px ;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 50px;
+  margin-left: 150px;
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 1075px;
+  height: 300px;
+  border: 5px solid black;
 `;
 
 const Title = styled.h1`
   font-size: 25px;
-  margin-bottom: 20px;
+ margin-top: 15px;
   text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #4d4d4d;
-  font-family: "Montserrat", sans-serif;
+  font-family: Monaco, monospace;
+    font-size: 25px;
+    font-weight:900;
+    text-transform: uppercase;
+    color: black;
 `;
 
 const Text = styled.p`
   font-size: 24px;
   text-align: center;
-  margin-bottom: 30px;
-  line-height: 1.5;
-  color: #4d4d4d;
-  font-family: "Montserrat", sans-serif;
+  margin-bottom: 25px;
+  font-family: Monaco, monospace;
+    font-size: 25px;
+    font-weight:900;
+    text-transform: uppercase;
+    color: black;
 `;
 
 const Icon = styled.i`
@@ -61,9 +76,20 @@ const Button = styled.button`
     background-color: #8bc34a;
   }
 `;
-
+const StyledBar = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: none;
+  z-index: 1;
+  border-bottom: 1px solid #ddd;
+`;
 const Composting = () => {
   return (
+    <>
+    <StyledBar>
+        <Bar />
+      </StyledBar>
     <CompostingContainer>
       <CompostingBox>
         <Icon className="fas fa-seedling"></Icon>
@@ -74,6 +100,7 @@ const Composting = () => {
         <Button>Get Started</Button>
       </CompostingBox>
     </CompostingContainer>
+    </>
   );
 };
 

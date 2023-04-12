@@ -5,6 +5,7 @@ import "firebase/compat/firestore";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import Bar from "./Bar";
 
 // Setting firebaseConfig 
 const firebaseConfig = {
@@ -21,37 +22,54 @@ firebase.initializeApp(firebaseConfig);
 
 //Style 
 const SignUpContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f5f5f5;
+ display: flex;
+  background-image: url('https://img.freepik.com/premium-photo/black-stone-cooking-background-spices-vegetables-top-view-free-space-your-text-generative-ai_410516-988.jpg');
+ background-size: 100%;
+  top:0px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  background-position: center top;
+  height:140vh;
+  background-repeat: no-repeat;
 `;
 const SignInLink = styled.div`
   font-size: 16px;
-  margin-top: 20px;
+ margin-top: 25px;
+
   text-align: center;
   font-family: "Montserrat", sans-serif;
+ 
 `;
 
 const SignUpBox = styled.div`
+
+
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 50px;
+  margin-left: 350px;
+  margin-top: 150px;
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width:500px;
+  height: 500px;
+  border: 5px solid black;
 `;
 
 const Title = styled.h1`
+
   font-size: 25px;
-  margin-bottom: 20px;
+ margin-top: 55px;
   text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #4d4d4d;
-  font-family: "Montserrat", sans-serif;
+  font-family: Monaco, monospace;
+    font-size: 25px;
+    font-weight:900;
+    text-transform: uppercase;
+    color: black;
 `;
 
 const InputWrapper = styled.div`
@@ -62,17 +80,16 @@ const InputWrapper = styled.div`
 `;
 
 const Label = styled.label`
-  font-size: 18px;
-  margin-bottom: 5px;
-  font-family: "Montserrat", sans-serif;
-  color: #4d4d4d;
+  margin-bottom: 10px;
+  font-family: Monaco, monospace;
+  color: black;
 `;
 
 const Input = styled.input`
-  font-size: 16px;
   padding: 10px;
-  border: 1px solid #ccc;
   border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
   font-family: "Montserrat", sans-serif;
 `;
 
@@ -92,6 +109,14 @@ const ErrorMessage = styled.div`
   color: red;
   margin-bottom: 10px;
   font-family: "Montserrat", sans-serif;
+`;
+const StyledBar = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: none;
+  z-index: 1;
+  border-bottom: 1px solid #ddd;
 `;
 
 // Setting the form to signUp 
@@ -118,6 +143,10 @@ const SignUp = () => {
 
   // return the input field
   return (
+    <>
+    <StyledBar>
+        <Bar />
+      </StyledBar>
     <SignUpContainer>
       <SignUpBox>
         <Title>Sign Up</Title>
@@ -142,6 +171,7 @@ const SignUp = () => {
         </SignInLink>
       </SignUpBox>
     </SignUpContainer>
+    </>
   );
 };
 

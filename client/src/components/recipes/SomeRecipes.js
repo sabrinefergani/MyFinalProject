@@ -37,15 +37,17 @@ const RecipePhotoWrapper = styled.div`
   margin-left: 165px;
   width: 225px;
   height: 225px;
-  border-radius: 25%;
+  border-radius: 50%;
   overflow: hidden;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   cursor: pointer;
-  
+  border: 5px solid black;
+
   &:hover {
     transform: scale(1.05);
   }
 `;
+
 
 const RecipePhoto = styled.img`
   width: 100%;

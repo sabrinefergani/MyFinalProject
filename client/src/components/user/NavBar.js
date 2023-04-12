@@ -21,6 +21,9 @@ const NavBar = () => {
     <StyledBar>
       <nav>
         <ul>
+        <div className="logo">
+  No Waste
+</div>
           <StyledListItem>
             <StyledLink to="/dashBoard">DashBoard</StyledLink>
           </StyledListItem>
@@ -36,14 +39,24 @@ const NavBar = () => {
 
 //Style 
 const StyledBar = styled.header`
-  display: flex;
+ display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 40px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  width:100%;
+  background-color: transparent;
+  z-index: 1;
+  margin-top: 10px;
+  
+  .logo {
+    font-family: Monaco, monospace;
+    font-size: 24px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    margin-left: 40px;
+    margin-right:215px
+  }
 
   nav {
     display: flex;
@@ -61,15 +74,31 @@ const StyledBar = styled.header`
   }
 
   li {
-    margin-right: 10px;
-    font-family: "Montserrat", sans-serif;
-    font-size: 10px;
-    padding-left: 100px;
+    margin-right: 12px;
+    font-family: Monaco, monospace;
+    font-size: 12px;
+    font-weight:900;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #4d4d4d;
+    color: white;
+    cursor: pointer;
     position: relative;
     overflow: hidden;
+
+    &:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: white;
+      bottom: -5px;
+      left: 0;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    &:hover:before {
+      transform: scaleX(1);
+    }
   }
 `;
 
@@ -85,13 +114,33 @@ const StyledListItem = styled.li`
 `;
 
 const StyledLink = styled(Link)`
-  color: #4d4d4d;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  padding: 10px;
-  &:hover {
-    color: #8bc34a;
-  }
+      margin-right: 12px;
+    font-family: Monaco, monospace;
+    font-size: 12px;
+    font-weight:900;
+    text-transform: uppercase;
+    color: white;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+
+    &:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: green;
+      bottom: -5px;
+      left: 0;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    &:hover:before {
+      transform: scaleX(1);
+    }
+  
 `;
 
 const StyledButton = styled.button`
@@ -102,6 +151,7 @@ const StyledButton = styled.button`
   cursor: pointer;
   font-size: 18px;
   padding: 10px 20px;
+  margin-left: 740px;
   transition: background-color 0.3s ease;
   &:hover {
     background-color: #689f38;

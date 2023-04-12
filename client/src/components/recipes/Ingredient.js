@@ -9,16 +9,17 @@ const DropdownContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 30px;
+  
 `;
 
 const DropdownTitle = styled.h2`
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #4d4d4d;
-  font-family: "Montserrat", sans-serif;
+  color: white;
+  
+  font-family: Lucida Handwriting, cursive;
+  font-size: 15px;
 `;
 
 const Dropdown = styled.select`
@@ -33,11 +34,16 @@ const Dropdown = styled.select`
   margin-bottom: 20px;
   outline: none;
   cursor: pointer;
+  border: 5px solid black;
 `;
 
 const DropdownOption = styled.option`
   font-size: 16px;
   font-weight: bold;
+  color: black;
+  
+  font-family: Lucida Handwriting, cursive;
+  font-size: 15px;
 `;
 
 const GoToRecipeButton = styled.button`
