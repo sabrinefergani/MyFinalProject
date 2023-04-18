@@ -15,6 +15,124 @@ const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 };
+const removeFromFavoriteRecipe = async (req, res) => {
+  const { email, recipeId } = req.body;
+  const client = new MongoClient(MONGO_URI, options);
+
+  try {
+    await client.connect();
+    const db = client.db("user");
+    const usersCollection = db.collection("data");
+
+    // check if user exists and if the dashboard array exists
+    const result = await usersCollection.findOneAndUpdate(
+      { email },
+      { $pull: { "dashboard": recipeId } },
+      { upsert: true }
+    );
+
+    if (result.ok) {
+      res.status(200).json({ message: "Favorite recipe removed successfully" });
+    } else {
+      res.status(500).json({ message: "Failed to remove favorite recipe" });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "An unexpected error occurred" });
+  } finally {
+    await client.close();
+  }
+};
+
+// get the dashboard
+const getDashboardByEmail = async (req, res) => {
+  const { email } = req.params;
+  const client = new MongoClient(MONGO_URI, options);
+
+  try {
+    await client.connect();
+    const db = client.db("user");
+    const usersCollection = db.collection("data");
+
+    const user = await usersCollection.findOne({ email });
+
+    if (user) {
+      res.status(200).json({ id: user.dashboard });
+    } else {
+      res.status(404).json({ message: "User not found" });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "An unexpected error occurred" });
+  } finally {
+    await client.close();
+  }
+};
+
+
+
+
+//Add favorite recipe array 
+const addToFavoriteRecipe = async (req, res) => {
+  const { email, recipeId } = req.body;
+  const client = new MongoClient(MONGO_URI, options);
+
+  try {
+    await client.connect();
+    const db = client.db("user");
+    const usersCollection = db.collection("data");
+
+    // check if user exists and if the dashboard array exists
+    const result = await usersCollection.findOneAndUpdate(
+      { email },
+      { $addToSet: { "dashboard": recipeId } },
+      { upsert: true }
+    );
+
+    if (result.ok) {
+      res.status(200).json({ message: "Favorite recipe added successfully" });
+    } else {
+      res.status(500).json({ message: "Failed to add favorite recipe" });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "An unexpected error occurred" });
+  } finally {
+    await client.close();
+  }
+};
+
+
+// Add this createUser function to your handler file
+const createUser = async (req, res) => {
+  const { email, displayName } = req.body;
+  const client = new MongoClient(MONGO_URI, options);
+
+  try {
+    await client.connect();
+    const db = client.db("user");
+    const usersCollection = db.collection("data");
+
+    const newUser = {
+      email,
+      displayName,
+      dashboard: [],
+    };
+
+    const result = await usersCollection.insertOne(newUser);
+    if (result.insertedCount > 0) {
+      res.status(201).json({ message: "User created successfully" });
+    } else {
+      res.status(500).json({ message: "Failed to create user" });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "An unexpected error occurred" });
+  } finally {
+    await client.close();
+  }
+};
+
 
 // get all the recipes 
 const getAllRecipes = async (req, res) => {
@@ -154,4 +272,8 @@ module.exports = {
   getRecipeById,
   getRandomRecipes,
   getRecipeNames,
+  createUser,
+  addToFavoriteRecipe,
+  getDashboardByEmail,
+  removeFromFavoriteRecipe,
 };

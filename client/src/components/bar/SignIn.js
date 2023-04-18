@@ -111,10 +111,11 @@ const SignIn = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
+      await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
       await firebase.auth().signInWithEmailAndPassword(email, password);
-      navigate("/dashBoard");
+      navigate("/dashboard");
     } catch (error) {
       setError(error.message);
     }

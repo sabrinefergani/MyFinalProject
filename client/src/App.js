@@ -11,9 +11,12 @@ import SignIn from "./components/bar/SignIn";
 import SignUp from "./components/bar/SignUp";
 import DashBoard from "./components/user/DashBoard";
 import OneRecipe from "./components/user/OneRecipe";
+import FavoriteRecipe from "./components/user/FavoriteRecipe";
 
 import { createGlobalStyle } from "styled-components";
 import GetRecipe from "./components/user/GetRecipe";
+
+import { UserProvider } from "./components/bar/UserContext";
 
 const GlobalStyle = createGlobalStyle`
   html, body {
@@ -21,40 +24,45 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
 `;
-// Setting the route for page
+
 const App = () => {
   return (
     <BrowserRouter>
-      <RowWrapper>
-        <Main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/aboutUs" element={<AboutUs />} />
-            <Route path="/recipes" element={<Recipes />} />
-            <Route path="/composting" element={<Composting />} />
-            <Route path="/contactUs" element={<ContactUs />} />
-            <Route path="/recipes/:id" element={<SingleRecipe />} />
-            <Route path="/signIn" element={<SignIn />} />
-            <Route path="/signUp" element={<SignUp />} />
-            <Route path="/dashBoard" element={<DashBoard />} />
-            <Route path="/contentRecipe" element={<GetRecipe />} />
-            <Route path="/getRecipe/:id" element={<OneRecipe />} />
-          </Routes>
-        </Main>
-      </RowWrapper>
+      <UserProvider>
+        <GlobalStyle />
+        <RowWrapper>
+          <Main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/aboutUs" element={<AboutUs />} />
+              <Route path="/recipes" element={<Recipes />} />
+              <Route path="/composting" element={<Composting />} />
+              <Route path="/contactUs" element={<ContactUs />} />
+              <Route path="/recipes/:id" element={<SingleRecipe />} />
+              <Route path="/signIn" element={<SignIn />} />
+              <Route path="/signUp" element={<SignUp />} />
+              <Route path="/dashBoard" element={<DashBoard />} />
+              <Route path="/contentRecipe" element={<GetRecipe />} />
+              <Route path="/getRecipe/:id" element={<OneRecipe />} />
+              <Route path="/favorite" element={<FavoriteRecipe />} />
+            </Routes>
+          </Main>
+        </RowWrapper>
+      </UserProvider>
     </BrowserRouter>
   );
 };
 
-//Some styling
 const Main = styled.div`
   flex: 1;
   padding-right: 20px;
   background-color: white;
 `;
+
 const RowWrapper = styled.div`
   display: flex;
   flex-direction: row;
   padding-top: 70px;
 `;
+
 export default App;

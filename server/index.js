@@ -13,9 +13,13 @@ const {
   getRecipeById,
   getRandomRecipes,
   getRecipeNames,
+  createUser,
+  addToFavoriteRecipe,
+  getDashboardByEmail,
+  removeFromFavoriteRecipe,
 } = require("./handlers");
 
-const port = 8000;
+const port =8000;
 
 const app = express();
 
@@ -27,16 +31,25 @@ firebaseAdmin.initializeApp({
 });
 
 app
+
+
   .use(express.static("server/asset"))
   .use(express.urlencoded({ extended: false }))
   .use("/", express.static(__dirname + "/"))
   .use(morgan("tiny"))
   .use(express.json())
   .use(cors())
+
+
+  .get("/api/user/id/:email", getDashboardByEmail)
   .get("/api/recipes/names", getRecipeNames)
   .get("/api/recipes", getAllRecipes)
   .get("/api/recipes/:_id", getRecipeById)
-  .get("/api/random-recipes", getRandomRecipes)
+  .get("/api/random-recipes", getRandomRecipes) 
+  .post("/api/user", createUser)
+  .post("/api/user/favorite",addToFavoriteRecipe)
+  .delete("/api/user/favorite/:id", removeFromFavoriteRecipe)
+  
   .get("/test", (req, res) => {
     res.status(200).json({ itWorked: true });
   })
@@ -49,4 +62,9 @@ app
       message: "This is obviously not what you are looking for.",
     });
   })
+
+
+  //
+ 
+  
   .listen(port, () => console.log(`Listening on port ${port}`));

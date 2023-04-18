@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import firebase from "firebase/compat/app";
+
+
+import "firebase/auth";
+
 
 import asparagus from "../asset/asparagus.jpg";
 import beans from "../asset/beans.jpg";
@@ -135,6 +140,25 @@ const RecipeValue = styled.p`
   transition: color 0.3s ease-in-out;
   font-size: 12px;
 `;
+const FavoriteButton = styled.button`
+  background-color: #4d4d4d;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  font-family: "Montserrat", sans-serif;
+  transition: background-color 0.3s ease-in-out;
+  cursor: pointer;
+  margin-top: 10px;
+  &:hover {
+    background-color: #8bc34a;
+  }
+`;
+
 
 // create a name for photo
 const recipePhotos = {
@@ -161,9 +185,10 @@ const recipePhotos = {
 };
 
 // Setting the recipe // fetch them
+
 const ToAllRecipes = () => {
   const [recipes, setRecipes] = useState([]);
-
+  const [addedFavorites, setAddedFavorites] = useState([]);
   useEffect(() => {
     console.log("Fetching recipes...");
     const fetchRecipes = async () => {
@@ -179,6 +204,36 @@ const ToAllRecipes = () => {
     fetchRecipes();
   }, []);
 
+  const addFavoriteRecipe = async (recipeId,) => {
+    try {
+      const user = firebase.auth().currentUser;
+      if (!user) {
+        console.log("User is not logged in");
+        return;
+      }
+      const idToken = await user.getIdToken();
+      const response = await fetch(
+        `http://localhost:8000/api/user/favorite`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${idToken}`,
+          },
+          body: JSON.stringify({
+            email: user.email,
+            recipeId,
+          }),
+        }
+      );
+      const data = await response.json();
+      console.log(data.message);
+      setAddedFavorites([...addedFavorites, recipeId]);
+    } catch (error) {
+      console.error("There was an error adding the favorite recipe:", error);
+    }
+  };
+  
   // return info for  recipe
   return (
     
@@ -242,6 +297,13 @@ const ToAllRecipes = () => {
               {recipe.nutritional_value.saturated_fat}, Total carbohydrates:
               {recipe.nutritional_value.total_carbohydrates},
             </RecipeValue>
+            <FavoriteButton
+  onClick={() => addFavoriteRecipe(recipe._id)}
+  disabled={addedFavorites.includes(recipe._id)}
+>
+  Add to Favorites
+</FavoriteButton>
+
           </RecipeItem>
         ))}
       </RecipeList>

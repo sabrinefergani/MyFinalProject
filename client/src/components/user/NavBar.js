@@ -11,7 +11,7 @@ const NavBar = () => {
   const handleLogout = async () => {        
     try {
       await firebase.auth().signOut();  // Log out , redirect to home 
-      navigate("/home");
+      navigate("/");
     } catch (error) {
       console.error(error);
     }
@@ -29,6 +29,9 @@ const NavBar = () => {
           </StyledListItem>
           <StyledListItem>
             <StyledLink to="/contentRecipe">Recipe</StyledLink>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledLink to="/favorite">Favorite Recipes</StyledLink>
           </StyledListItem>
         </ul>
       </nav>

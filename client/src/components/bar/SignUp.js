@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
+
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "./UserContext";
+
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Bar from "./Bar";
+
 
 // Setting firebaseConfig 
 const firebaseConfig = {
@@ -121,11 +125,16 @@ const StyledBar = styled.div`
 
 // Setting the form to signUp 
 const SignUp = () => {
+  const { user, setUser } = useContext(UserContext);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -135,18 +144,39 @@ const SignUp = () => {
       await firebase.auth().currentUser.updateProfile({
         displayName: username,
       });
-      navigate("/dashBoard");
+
+      await fetch("http://localhost:8000/api/user", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: firebase.auth().currentUser.email,
+          displayName: firebase.auth().currentUser.displayName,
+        }),
+      });
+
+      setUser({
+        displayName: firebase.auth().currentUser.displayName,
+        email: firebase.auth().currentUser.email,
+      });
+
+      navigate("/dashboard");
     } catch (error) {
       setError(error.message);
     }
   };
 
+
+  
   // return the input field
   return (
+   
     <>
     <StyledBar>
         <Bar />
       </StyledBar>
+      <UserContext.Provider value={{ user, setUser }}>
     <SignUpContainer>
       <SignUpBox>
         <Title>Sign Up</Title>
@@ -171,6 +201,7 @@ const SignUp = () => {
         </SignInLink>
       </SignUpBox>
     </SignUpContainer>
+    </UserContext.Provider>
     </>
   );
 };
